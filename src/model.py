@@ -20,6 +20,9 @@ class LikelihoodModelForNormalDist:
         self.U2 = sorted_data[sorted_data <= quantiles[0]]
         self.Un = sorted_data[(sorted_data > quantiles[0]) & (sorted_data < quantiles[1])]
         self.U1 = sorted_data[sorted_data > quantiles[1]]
+        # self.U2 = sorted_data[sorted_data <= self.t1]
+        # self.Un = sorted_data[(sorted_data > self.t1) & (sorted_data < self.t2)]
+        # self.U1 = sorted_data[sorted_data >= self.t2]
 
         return (self.U1, self.U2, self.Un)
 

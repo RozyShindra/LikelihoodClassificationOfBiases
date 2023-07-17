@@ -25,9 +25,9 @@ class CalculateWordBias:
     def calculate_target_embeddings(self):
         c1 = self.sbert_model.encode(self.target1)
         c2 = self.sbert_model.encode(self.target2)
-        c1 = torch.tensor(np.mean(c1, axis=0), device=self.device)
-        c2 = torch.tensor(np.mean(c2, axis=0), device=self.device)
-        self.c1, self.c2 = c1, c2
+        
+        self.c1 = torch.tensor(np.mean(c1, axis=0), device=self.device)
+        self.c2 = torch.tensor(np.mean(c2, axis=0), device=self.device)
 
         return (self.c1, self.c2)
 

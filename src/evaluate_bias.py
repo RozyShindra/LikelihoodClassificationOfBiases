@@ -7,7 +7,7 @@ def preprocess_data(data):
     ...
     return data
 
-def eval_T():
+def eval_T(k=2):
     data = pd.read_csv("data/McReview.csv")
     data = preprocess_data(data)
 
@@ -25,7 +25,7 @@ def eval_T():
     sigma = np.std(total_pop)
 
     # TODO : Find a way to compute or estimate t1 or t2
-    likelihood_clf = LikelihoodModelForNormalDist(mu+2*sigma, mu-2*sigma, threshold_limit=0)
+    likelihood_clf = LikelihoodModelForNormalDist(mu-k*sigma, mu+k*sigma, threshold_limit=0)
     likelihood_clf.fit_total_pop()
 
     preds = likelihood_clf.predict(wbiases)[0]
