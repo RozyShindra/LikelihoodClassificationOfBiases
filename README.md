@@ -66,17 +66,19 @@ data = pd.read_csv("path/to/data")
 You can use the following piece of code to annotate your initial dataset to classify comments in thre different categories, namely $c_1$ biased, $c_2$ biased or neutral.
 
 ```python
-# Load the dataset
 from src.wordbiases import CalculateWordBias
 from src.model import LikelihoodModelForNormalDist
 
+# Set two different target sets consitsting of words you wish to target
 target_set_1 = ["abuse", "bad", "hate", "worst"]
 target_set_2   = ["love", "good", "peace", "calm"] 
+
+# Select a list of Focus Words (i.e words that may contribute to the biases in any given comment)
 F = ["ADJ", "NOUN", "PRON"]
+
 wbcalc = CalculateWordBias(target_set_1, target_set_2, F, computing_device="cuda")
 wbcalc.process_documents(data, "text")
 c1, c2 = wbcalc.calculate_target_embeddings()
-
 
 wbiases, _ , biased_words = wbcalc.calculate_biases()
 total_pop = [b for _, b in biased_words]
@@ -84,10 +86,10 @@ total_pop = [b for _, b in biased_words]
 mu = np.mean(total_pop)
 sigma = np.std(total_pop)
 
-# TODO : Find a way to compute or estimate t1 or t2
 likelihood_clf = LikelihoodModelForNormalDist(0.05, 0.95, threshold_limit=0)
 likelihood_clf.fit_total_pop(total_pop)
 
+# predictions
 preds = likelihood_clf.predict(wbiases)[0]
 data["prclass"] = preds
 ```
