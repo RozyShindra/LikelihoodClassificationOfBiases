@@ -14,7 +14,7 @@ def eval_T(k=2):
     target_set_1 = ["sports", "football", "athletics", "game"]
     target_set_2   = ["crime", "murder", "theft", "violence"] 
     F = ["ADJ", "NOUN", "PRON"]
-    wbcalc = CalculateWordBias(target_set_1, target_set_1, F, computing_device="cuda")
+    wbcalc = CalculateWordBias(target_set_1, target_set_2, F, computing_device="cuda")
     wbcalc.process_documents(data, "review")
     c1, c2 = wbcalc.calculate_target_embeddings()
 
