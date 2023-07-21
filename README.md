@@ -51,7 +51,7 @@ Follow these steps to install and set up and use our model to anaylze text on yo
 $ pip install requirements.txt
 ```
 2. Step 2: Choose and install a pre-trained word embedding model from popular options like Bert, Sbert, spaCy, or gensim. (You can also train your own word-embeddings)
-3. You can use the example notebook in `src/examples` to analyze your own data with the **sbert_model**, Please feel free to interact with the two experimentation notebooks located in the main directory. You have the flexibility to choose any word embedding model that you prefer for your experiments. By exploring and comparing the results obtained from different word embeddings.
+3. You can use the example notebooks, such as `example1.ipynb` to analyze your own data with the **sbert_model**, Please feel free to interact with the two experimentation notebooks located in the main directory. You have the flexibility to choose any word embedding model that you prefer for your experiments. By exploring and comparing the results obtained from different word embeddings.
 
 ## Usage
 
